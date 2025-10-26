@@ -19,11 +19,14 @@ const NewsCard = ({ news }) => {
   return (
     <div className="card bg-base-100 shadow-xl border">
       <figure>
-        <img src={thumbnail_url} alt="news" className="w-full h-64 object-cover" />
+        <img
+          src={thumbnail_url}
+          alt="news"
+          className="w-full h-64 object-cover"
+        />
       </figure>
 
       <div className="card-body">
-
         {/* Title */}
         <h2 className="card-title text-xl font-bold">{title}</h2>
 
@@ -65,10 +68,20 @@ const NewsCard = ({ news }) => {
           ))}
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-gray-600 mt-2">
-          {details.slice(0, 150)}...
-        </p>
+        {/* details */}
+
+        <div className="px-4 text-accent">
+          {details.length > 200 ? (
+            <>
+              {details.slice(0, 200)}...
+              <span className="text-primary font-semibold cursor-pointer hover:underline">
+                Read more
+              </span>
+            </>
+          ) : (
+            details
+          )}
+        </div>
 
         {/* Footer Badges */}
         <div className="flex gap-2 mt-3">
